@@ -1,40 +1,52 @@
 {
   "expo": {
-    "name": "Neuville sur Saone",
+    "name": "NeuvilleSurSaoneAccueilApp",
     "slug": "neuvillesusaone-accueilapp",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
-    "orientation": "landscape",
-    "icon": "./Src/Assets/Images/icon-neuville.png",
-    "userInterfaceStyle": "light",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./Src/Assets/splash.png",
-      "resizeMode": "contain"
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.neuvillesusaone.accueilapp",
+      "buildNumber": "1.0.0"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.loiiic69.neuvillesusaoneaccueilapp"
+      "package": "com.neuvillesusaone.accueilapp",
+      "versionCode": 1,
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "expo-analytics-segment",
+          "config": {
+            "apiKey": "YOUR_SEGMENT_API_KEY"
+          }
+        }
+      ]
     },
     "extra": {
       "eas": {
         "projectId": "5f1a3ae5-8148-4fa9-b400-0a6d3fdce30c"
       }
-    },
-    "owner": "loiiic69"
+    }
   }
 }
