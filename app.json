@@ -1,9 +1,12 @@
 {
   "expo": {
     "name": "Neuville sur Saone",
-    "slug": "Neuville sur Saone",
+    "slug": "neuvillesusaone-accueilapp",
     "version": "1.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "landscape",
     "icon": "./Src/Assets/Images/icon-neuville.png",
     "userInterfaceStyle": "light",
@@ -21,10 +24,17 @@
       "adaptiveIcon": {
         "foregroundImage": "",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.loiiic69.neuvillesusaoneaccueilapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5f1a3ae5-8148-4fa9-b400-0a6d3fdce30c"
+      }
+    },
+    "owner": "loiiic69"
   }
 }

@@ -8,9 +8,12 @@ const { width: viewportWidth } = Dimensions.get('window');
 const images = [
   { uri: require('../Assets/slider1.png'), url: 'https://www.mairie-neuvillesursaone.fr' },
   { uri: require('../Assets/slider2.png'), url: 'https://passeport.ants.gouv.fr/demarches-en-ligne/faire-une-premiere-demande-de-carte-nationale-d-identite' },
-  { uri: require('../Assets/slider1.png'), url: 'https://www.example3.com' },
-  { uri: require('../Assets/slider1.png'), url: 'https://www.example4.com' },
-  { uri: require('../Assets/slider1.png'), url: 'https://www.example5.com' },
+  { uri: require('../Assets/slider3.png'), url: 'https://passeport.ants.gouv.fr/demarches-en-ligne/faire-une-premiere-demande-de-passeport' },
+  { uri: require('../Assets/slider3.png'), url: 'https://ants.gouv.fr/' },
+  { uri: require('../Assets/slider3.png'), url: 'https://www.service-public.fr/' },
+  { uri: require('../Assets/slider3.png'), url: 'https://www.toodego.com/connect/' },
+  { uri: require('../Assets/slider3.png'), url: 'https://appli.lumiplay.net/' },
+  { uri: require('../Assets/slider3.png'), url: 'https://www.facebook.com/profile.php?id=100064593043905&locale=fr_FR' },
 ];
 
 const CarouselComponent = () => {
@@ -70,7 +73,7 @@ const styles = StyleSheet.create({
     height: 200,
     width: viewportWidth - 60,
     overflow: 'hidden',
-    marginBottom: 20,
+    marginBottom: 50,
   },
   image: {
     width: '100%',
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
+    top: -15,
   },
   paginationDot: {
     width: 10,

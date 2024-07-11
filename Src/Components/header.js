@@ -8,17 +8,15 @@ import logo from '../Assets/logo_footer.png';
 import icon1 from '../Assets/picto_menu 1.png';
 import icon2 from '../Assets/picto_contact 1.png';
 import icon3 from '../Assets/picto_tel 1.png';
-const NavBar = ({ navigation  }) => {
+const NavBar = ({ navigation }) => {
   return (
     <View style={styles.header}>
       <Image source={logo} style={styles.logo} />
       <View style={styles.iconsContainer}>
-      <Image source={icon1} style={styles.icon} />
-      <TouchableOpacity title="Go to Details" onPress={() => navigation.navigate('Contact')}> 
-      <Image source={icon2} style={styles.icon} />
-      </TouchableOpacity>
-        <Image source={icon3} style={styles.icon} />
-        </View>
+        <TouchableOpacity>
+        <Image source={icon1} style={styles.icon} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -35,7 +33,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 270,
-    height: 130,
+    height: 150,
     position: 'absolute',
     left: -20,
     top: 40,
