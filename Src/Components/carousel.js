@@ -9,11 +9,10 @@ const images = [
   { uri: require('../Assets/slider1.png'), url: 'https://www.mairie-neuvillesursaone.fr' },
   { uri: require('../Assets/slider2.png'), url: 'https://passeport.ants.gouv.fr/demarches-en-ligne/faire-une-premiere-demande-de-carte-nationale-d-identite' },
   { uri: require('../Assets/slider3.png'), url: 'https://passeport.ants.gouv.fr/demarches-en-ligne/faire-une-premiere-demande-de-passeport' },
-  { uri: require('../Assets/slider3.png'), url: 'https://ants.gouv.fr/' },
-  { uri: require('../Assets/slider3.png'), url: 'https://www.service-public.fr/' },
-  { uri: require('../Assets/slider3.png'), url: 'https://www.toodego.com/connect/' },
-  { uri: require('../Assets/slider3.png'), url: 'https://appli.lumiplay.net/' },
-  { uri: require('../Assets/slider3.png'), url: 'https://www.facebook.com/profile.php?id=100064593043905&locale=fr_FR' },
+  { uri: require('../Assets/slider4.png'), url: 'https://www.service-public.fr/' },
+  { uri: require('../Assets/slider5.png'), url: 'https://www.toodego.com/connect/' },
+  { uri: require('../Assets/slider6.png'), url: 'https://www.mairie.neuvillesursaone.fr/actualites/info-municipale/telechargez-cityall/' },
+  { uri: require('../Assets/slider7.png'), url: 'https://www.facebook.com/profile.php?id=100064593043905&locale=fr_FR' },
 ];
 
 const CarouselComponent = () => {
