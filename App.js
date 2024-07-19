@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ScreensaverComponent from './Src/Components/Screensaver';
 import HomeScreen from './Src/Screens/homeScreen/HomeScreen';
 
+
+
 const Stack = createStackNavigator();
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
