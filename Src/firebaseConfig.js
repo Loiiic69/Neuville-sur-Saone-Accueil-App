@@ -18,5 +18,6 @@ const app = initializeApp(firebaseConfig);
 
 // Obtenez une instance de la base de données
 const database = getDatabase(app);
+const db = getDatabase();
 
-export { app, database };
+export { app, database, db  };

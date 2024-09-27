@@ -1,13 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Image, FlatList, Dimensions } from 'react-native';
-
-// Importer les images locales
-const images = [
-  require('../Assets/Images/2024 - été continu.jpg'),
-  require('../Assets/Images/2024 -visu  tranquilité vacances.jpg'),
-  require('../Assets/Images/légé Grand Lyoncollecte gros électroménagers ecosystem.jpg'),
-  require('../Assets/Images/jardinephemere.jpg'),
-];
+import { db } from '../firebaseConfig'; // Importez la configuration Firebase
+import { ref, get } from 'firebase/database';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const IMAGE_WIDTH = SCREEN_WIDTH * 0.8; // Largeur de l'image : 80% de la largeur de l'écran
@@ -16,27 +10,22 @@ const MAX_IMAGE_HEIGHT = Dimensions.get('window').height * 0.7; // Hauteur maxim
 
 const ScreensaverComponent = ({ onNavigateToHome }) => {
   const flatListRef = useRef(null);
-  const [imageDimensions, setImageDimensions] = useState([]);
+  const [images, setImages] = useState([]); // State pour stocker les images
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Récupérer les images depuis Firebase au montage du composant
   useEffect(() => {
-    // Charger les dimensions des images locales
-    const loadImageDimensions = async () => {
-      const dimensionsPromises = images.map((image) => 
-        new Promise((resolve) => 
-          Image.getSize(
-            Image.resolveAssetSource(image).uri, 
-            (width, height) => resolve({ width, height }),
-            () => resolve({ width: SCREEN_WIDTH, height: SCREEN_WIDTH }) // Valeurs par défaut en cas d'erreur
-          )
-        )
-      );
-
-      const dimensions = await Promise.all(dimensionsPromises);
-      setImageDimensions(dimensions);
+    const fetchImages = async () => {
+      const sliderRef = ref(db, 'slider/uris'); // Référence au chemin des images dans Firebase
+      const snapshot = await get(sliderRef);
+      if (snapshot.exists()) {
+        setImages(snapshot.val()); // Mettre à jour le state avec les URIs des images
+      } else {
+        console.log('No data available');
+      }
     };
 
-    loadImageDimensions();
+    fetchImages();
   }, []);
 
   useEffect(() => {
@@ -56,38 +45,36 @@ const ScreensaverComponent = ({ onNavigateToHome }) => {
 
     // Nettoyer l'intervalle lors du démontage du composant
     return () => clearInterval(intervalId);
-  }, [currentIndex]);
+  }, [currentIndex, images]);
 
   return (
     <View style={styles.container}>
       <View style={styles.carouselContainer}>
-        <FlatList
-          ref={flatListRef}
-          data={images}
-          renderItem={({ item, index }) => {
-            const { width, height } = imageDimensions[index] || { width: SCREEN_WIDTH, height: SCREEN_WIDTH };
-            const aspectRatio = width / height;
-            const imageHeight = Math.min(IMAGE_WIDTH / aspectRatio, MAX_IMAGE_HEIGHT); // Ajuster la hauteur en fonction du ratio d'aspect et des contraintes maximales
-
-            return (
+        {images.length > 0 ? (
+          <FlatList
+            ref={flatListRef}
+            data={images}
+            renderItem={({ item }) => (
               <Image 
-                source={item} 
+                source={{ uri: item }} 
                 style={{ 
                   width: IMAGE_WIDTH,
-                  height: imageHeight, // Hauteur dynamique basée sur l'aspect ratio et la hauteur maximale
-                  resizeMode: 'contain', // Conserve les proportions de l'image
+                  height: MAX_IMAGE_HEIGHT, 
+                  resizeMode: 'contain',
                 }} 
               />
-            );
-          }}
-          horizontal
-          keyExtractor={(item, index) => index.toString()} // Utiliser l'index comme clé
-          showsHorizontalScrollIndicator={false}
-          pagingEnabled
-          snapToAlignment="center"
-          snapToInterval={IMAGE_WIDTH}
-          onScrollToIndexFailed={() => {}}
-        />
+            )}
+            horizontal
+            keyExtractor={(item, index) => index.toString()}
+            showsHorizontalScrollIndicator={false}
+            pagingEnabled
+            snapToAlignment="center"
+            snapToInterval={IMAGE_WIDTH}
+            onScrollToIndexFailed={() => {}}
+          />
+        ) : (
+          <Text style={styles.loadingText}>Chargement des images...</Text>
+        )}
       </View>
       <TouchableOpacity style={styles.button} onPress={onNavigateToHome}>
         <Text style={styles.buttonText}>Retour à l'accueil</Text>
@@ -95,6 +82,7 @@ const ScreensaverComponent = ({ onNavigateToHome }) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
