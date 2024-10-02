@@ -1,13 +1,11 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Navi } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { View, Image, StyleSheet, TouchableOpacity, } from 'react-native';
+
 
 // Importez votre logo ici
 import logo from '../Assets/logo_footer.png';
 import icon1 from '../Assets/picto_menu 1.png';
-import icon2 from '../Assets/picto_contact 1.png';
-import icon3 from '../Assets/picto_tel 1.png';
+
 const NavBar = ({ navigation }) => {
   return (
     <View style={styles.header}>

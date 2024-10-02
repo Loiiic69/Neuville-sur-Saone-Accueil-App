@@ -16,32 +16,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.neuvillesusaone.accueilapp",
-      "buildNumber": "1.0.0"
-    },
     "android": {
       "package": "com.neuvillesusaone.accueilapp",
-      "versionCode": 1,
-      "permissions": [
-        "CAMERA",
-        "READ_EXTERNAL_STORAGE",
-        "WRITE_EXTERNAL_STORAGE"
-      ]
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "expo-analytics-segment",
-          "config": {
-            "apiKey": "YOUR_SEGMENT_API_KEY"
-          }
-        }
-      ]
+      "versionCode": 1
     },
     "extra": {
       "eas": {
