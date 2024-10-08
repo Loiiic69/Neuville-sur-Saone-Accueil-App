@@ -3,8 +3,6 @@ import { View, StyleSheet } from 'react-native';
 import NavBar from '../../Components/header';
 import BackgroundImage from '../../Components/backgroundhome';
 import CarouselComponent from '../../Components/carousel';
-import Footer from '../../Components/footer';
-
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>

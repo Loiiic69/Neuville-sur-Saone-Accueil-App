@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, AppState, Dimensions } from 'react-native';
+import { AppState, Dimensions, AppRegistry } from 'react-native'; // Import de AppRegistry
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ScreensaverComponent from './Src/Components/Screensaver';
 import HomeScreen from './Src/Screens/homeScreen/HomeScreen';
-
-
+import { name as appName } from './app.json'; // Import du nom de l'application
 
 const Stack = createStackNavigator();
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -37,7 +36,6 @@ const App = () => {
       setAppState(nextAppState);
     });
 
-    // Attach touch event listeners to the entire app
     const handleTouch = () => handleUserInteraction();
     const subscription = AppState.addEventListener('change', handleTouch);
 
@@ -59,8 +57,8 @@ const App = () => {
       {isScreensaverVisible && (
         <ScreensaverComponent
           onNavigateToHome={() => {
-            setScreensaverVisible(false); // Masquer le screensaver
-            setLastInteractionTime(Date.now()); // Réinitialiser le temps d'interaction
+            setScreensaverVisible(false);
+            setLastInteractionTime(Date.now());
           }}
         />
       )}
@@ -68,10 +66,7 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+// Enregistrement de l'application principale
+AppRegistry.registerComponent(appName, () => App);
 
 export default App;

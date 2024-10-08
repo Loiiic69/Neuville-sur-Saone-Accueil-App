@@ -18,7 +18,8 @@
     ],
     "android": {
       "package": "com.neuvillesusaone.accueilapp",
-      "versionCode": 1
+      "versionCode": 1,
+      "jsEngine": "jsc"
     },
     "extra": {
       "eas": {

@@ -73,7 +73,7 @@ const ScreensaverComponent = ({ onNavigateToHome }) => {
             onScrollToIndexFailed={() => {}}
           />
         ) : (
-          <Text style={styles.loadingText}>Chargement des images...</Text>
+          <Text>Chargement des images...</Text>
         )}
       </View>
       <TouchableOpacity style={styles.button} onPress={onNavigateToHome}>
