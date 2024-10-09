@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { AppState, Dimensions, AppRegistry } from 'react-native'; // Import de AppRegistry
+import { AppState, Dimensions } from 'react-native'; // Import de AppRegistry
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ScreensaverComponent from './Src/Components/Screensaver';
 import HomeScreen from './Src/Screens/homeScreen/HomeScreen';
-import { name as appName } from './app.json'; // Import du nom de l'application
 
 const Stack = createStackNavigator();
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -65,8 +64,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-// Enregistrement de l'application principale
-AppRegistry.registerComponent(appName, () => App);
 
 export default App;
